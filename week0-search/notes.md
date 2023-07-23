@@ -34,8 +34,16 @@ A search problem has:
 
 An approach to solving search problems is as follows:
 * Start with a frontier that contains the initial state (that's the only state we know about at the beginning)
+* Start with an empty explored set
 * Repeat:
     * If the frontier is empty, then there is no solution
     * Remove a node from the frontier
     * If the node contains goal state, return the solution
-    * Otherwise, expand teh note, add resulting nodes to the frontier
+    * Otherwise, add the node to the explored set
+    * Expand the node, add resulting nodes to the frontier if they aren't already in the frontier or the explored set.
+
+How you remove nodes from the frontier and store them matters. For example, if you use a stack to store items, the algorithm will use depth-first search, since the last items added to the frontier are searched first (LIFO).
+
+__Depth-First Search__ : Search algorithm that always expands the deepest node in the frontier.
+
+__Breadth-First Search__ : Search algorithm that always expands the shallowest node in the frontier.
