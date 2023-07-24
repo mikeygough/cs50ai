@@ -52,4 +52,6 @@ __Uninformed Search__ : Search strategy that uses no problem-specific knowledge 
 
 __Informed Search__ : Search strategy that uses problem-specific knowledge to find solutions more efficiently. For example, in a maze problem using information about the distance between current location and the goal state. There are a number of informed search algorithms.
 
-__Greedy Best-First Search__ : Search algorithm that expands the node that it thinks is closest to the goal, as estimated by a heuristic function _(h(n))_
+__Greedy Best-First Search__ : Search algorithm that expands the node that it thinks is closest to the goal, as estimated by a heuristic function _h(n)_
+
+__A* Search__ : Search algorithm that expands node with lowest value of _g(n) + h(n)_ where _g(n) = cost to reach node_ and _h(n) = estimates cost to goal_.
