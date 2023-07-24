@@ -42,8 +42,12 @@ An approach to solving search problems is as follows:
     * Otherwise, add the node to the explored set
     * Expand the node, add resulting nodes to the frontier if they aren't already in the frontier or the explored set.
 
-How you remove nodes from the frontier and store them matters. For example, if you use a stack to store items, the algorithm will use depth-first search, since the last items added to the frontier are searched first (LIFO).
+How you remove nodes from the frontier and store them matters. For example, if you use a stack to store items, the algorithm will use depth-first search, since the last items added to the frontier are searched first (LIFO). On the other hand, you can achieve breadth-first search by using a queue to store the frontier.
 
-__Depth-First Search__ : Search algorithm that always expands the deepest node in the frontier.
+__Depth-First Search (DFS)__ : Search algorithm that always expands the deepest node in the frontier.
 
-__Breadth-First Search__ : Search algorithm that always expands the shallowest node in the frontier.
+__Breadth-First Search (BFS)__ : Search algorithm that always expands the shallowest node in the frontier.
+
+__Uninformed Search__ : Search strategy that uses no problem-specific knowledge (DFS, BFS).
+
+__Informed Search__ : Search strategy that uses problem-specific knowledge to find solutions more efficiently. For example, in a maze problem using information about the distance between current location and the goal state.
