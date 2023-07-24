@@ -54,4 +54,6 @@ __Informed Search__ : Search strategy that uses problem-specific knowledge to fi
 
 __Greedy Best-First Search__ : Search algorithm that expands the node that it thinks is closest to the goal, as estimated by a heuristic function _h(n)_
 
-__A* Search__ : Search algorithm that expands node with lowest value of _g(n) + h(n)_ where _g(n) = cost to reach node_ and _h(n) = estimates cost to goal_.
+__A* Search__ : Search algorithm that expands node with lowest value of _g(n) + h(n)_ where _g(n) = cost to reach node_ and _h(n) = estimates cost to goal_. A* is an optimal search algorithm if the following conditions are met:
+* _h(n)_ is admissible (never overestimates the true cost), and
+* _h(n)_ is consistent (for every node _n_ and successor _n'_ with step cost _c_, _h(n) <= h(n') + c)_
