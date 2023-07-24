@@ -50,4 +50,6 @@ __Breadth-First Search (BFS)__ : Search algorithm that always expands the shallo
 
 __Uninformed Search__ : Search strategy that uses no problem-specific knowledge (DFS, BFS).
 
-__Informed Search__ : Search strategy that uses problem-specific knowledge to find solutions more efficiently. For example, in a maze problem using information about the distance between current location and the goal state.
+__Informed Search__ : Search strategy that uses problem-specific knowledge to find solutions more efficiently. For example, in a maze problem using information about the distance between current location and the goal state. There are a number of informed search algorithms.
+
+__Greedy Best-First Search__ : Search algorithm that expands the node that it thinks is closest to the goal, as estimated by a heuristic function _(h(n))_
