@@ -57,3 +57,13 @@ __Greedy Best-First Search__ : Search algorithm that expands the node that it th
 __A* Search__ : Search algorithm that expands node with lowest value of _g(n) + h(n)_ where _g(n) = cost to reach node_ and _h(n) = estimates cost to goal_. A* is an optimal search algorithm if the following conditions are met:
 * _h(n)_ is admissible (never overestimates the true cost), and
 * _h(n)_ is consistent (for every node _n_ and successor _n'_ with step cost _c_, _h(n) <= h(n') + c)_
+
+__Minimax__ : In a two player game for example, the Max player aims to maximize their score and the Min player aims to minimize their score. Each outcome of the game is assigned a point value.
+
+Implementing a game could use the following functions:
+* _S0_: Initial state
+* _Player(s)_: Returns which player to move in state _s_
+* _Action(s)_: Returns legal moves in state _s_
+* _Result(s, a)_: Returns state after action _a_ taken in state _s_
+* _Terminal(s)_: Checks if state _s_ is a terminal state
+* _Utility(s)_: Final numerical value for terminal state _s_
