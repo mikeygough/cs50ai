@@ -67,3 +67,5 @@ Implementing a game could use the following functions:
 * _Result(s, a)_: Returns state after action _a_ taken in state _s_
 * _Terminal(s)_: Checks if state _s_ is a terminal state
 * _Utility(s)_: Final numerical value for terminal state _s_
+
+__Evaluation Function__ : Function that estimates the expected utility of the game from a given state. This is useful with a depth-limited minimax algorithm. Generally, the better the evaluation function, the better the AI.
