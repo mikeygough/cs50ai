@@ -44,9 +44,9 @@ An approach to solving search problems is as follows:
 
 How you remove nodes from the frontier and store them matters. For example, if you use a stack to store items, the algorithm will use depth-first search, since the last items added to the frontier are searched first (LIFO). On the other hand, you can achieve breadth-first search by using a queue to store the frontier.
 
-__Depth-First Search (DFS)__ : Search algorithm that always expands the deepest node in the frontier.
+__Depth-First Search (DFS)__ : Search algorithm that always expands the deepest node in the frontier. Uses a stack data structure for the frontier.
 
-__Breadth-First Search (BFS)__ : Search algorithm that always expands the shallowest node in the frontier.
+__Breadth-First Search (BFS)__ : Search algorithm that always expands the shallowest node in the frontier. Uses a queue data structure for the frontier.
 
 __Uninformed Search__ : Search strategy that uses no problem-specific knowledge (DFS, BFS).
 
