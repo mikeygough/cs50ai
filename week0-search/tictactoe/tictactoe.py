@@ -24,13 +24,12 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    x_count = 0
+    move_count = 0
     for i in range(len(board)):
         for j in range(len(board[i])):
-            if j == "X":
-                x_count += 1
-
-    if x_count % 2 == 0:
+            if board[i][j] == None:
+                move_count += 1
+    if move_count % 2 == 1:
         return "X"
     else:
         return "O"
@@ -62,7 +61,6 @@ def result(board, action):
     if action not in a:
         raise ValueError
 
-    print("action", action)
     # generate new board
     new_board = copy.deepcopy(board)
     new_board[action[0]][action[1]] = p
@@ -74,20 +72,17 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    print("board", board)
     for i in range(len(board)):
         for j in range(len(board[i])):
             # vertical win
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]:
-                    print(i, j)
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # horizontal win
             try:
                 if board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]:
-                    print(i, j)
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
@@ -98,14 +93,12 @@ def winner(board):
                 # left diagonal
                 try:
                     if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i+1][j+1]:
-                        print(i, j)
                         return board[i][j]
                 except (TypeError, IndexError):
                     pass
                 # right diagonal
                 try:
                     if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i-1][j+1]:
-                        print(i, j)
                         return board[i][j]
                 except (TypeError, IndexError):
                     pass
@@ -138,7 +131,10 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    # test generate random action
-    return random.choice(list(actions(board)))
+    if terminal(board):
+        return None
+    else:
+        # test generate random action
+        return random.choice(list(actions(board)))
 
     
