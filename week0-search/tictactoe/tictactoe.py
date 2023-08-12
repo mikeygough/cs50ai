@@ -4,6 +4,7 @@ Tic Tac Toe Player
 
 import math
 import copy
+import random
 
 X = "X"
 O = "O"
@@ -73,54 +74,71 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
+    # BUGGY BECAUSE OF NEGATIVE PYTHON LIST INDEXING
     print("board", board)
     for i in range(len(board)):
         for j in range(len(board[i])):
             # check above
             try:
                 if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check upper right diagonal
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check right
             try:
                 if board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check lower right diagonal
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check below
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check lower left diagonal
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check left
             try:
                 if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
             # check upper left diagonal
             try:
                 if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]:
+                    print(i, j)
+                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
@@ -153,4 +171,7 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+    # test generate random action
+    return random.choice(list(actions(board)))
+
+    
