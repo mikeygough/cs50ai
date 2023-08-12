@@ -74,7 +74,6 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    # BUGGY BECAUSE OF NEGATIVE PYTHON LIST INDEXING
     print("board", board)
     for i in range(len(board)):
         for j in range(len(board[i])):
@@ -92,34 +91,24 @@ def winner(board):
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
-            # [faulty] diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i-1][j+1] == board[i-2][j+2]:
-                    print(i, j)
-                    return board[i][j]
-            except (TypeError, IndexError):
+            # diagonal must pass through the center 
+            if i-1 < 0 or j-1 < 0:
                 pass
-            # lower right diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
-                    print(i, j)
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # upper left diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]:
-                    print(i, j)
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # lower left diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]:
-                    print(i, j)
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
+            else:
+                # left diagonal
+                try:
+                    if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i+1][j+1]:
+                        print(i, j)
+                        return board[i][j]
+                except (TypeError, IndexError):
+                    pass
+                # right diagonal
+                try:
+                    if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i-1][j+1]:
+                        print(i, j)
+                        return board[i][j]
+                except (TypeError, IndexError):
+                    pass
                 
     return None
 
