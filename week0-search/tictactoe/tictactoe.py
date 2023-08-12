@@ -25,7 +25,7 @@ def player(board):
     """
     x_count = 0
     for i in range(len(board)):
-        for j in range(len(board(i))):
+        for j in range(len(board[i])):
             if j == "X":
                 x_count += 1
 
@@ -43,7 +43,7 @@ def actions(board):
     for i in range(len(board)):
         for j in range(len(board[i])):
             if board[i][j] == EMPTY:
-                print(i, j)
+                # print(i, j)
                 action = (i, j)
                 actions.add(action)
 
@@ -54,16 +54,17 @@ def result(board, action):
     Returns the board that results from making move (i, j) on the board.
     """
     # get player
-    player = player(board)
+    p = player(board)
     # get actions
-    actions = actions(board)
+    a = actions(board)
 
-    if action not in actions:
+    if action not in a:
         raise ValueError
 
+    print("action", action)
     # generate new board
     new_board = copy.deepcopy(board)
-    new_board[action[0]][action[1]] = player
+    new_board[action[0]][action[1]] = p
 
     return new_board
 
@@ -72,55 +73,56 @@ def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
+    print("board", board)
     for i in range(len(board)):
         for j in range(len(board[i])):
             # check above
             try:
-                if board[i][j] == board[i-1][j] & board[i-2][j]:
+                if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check upper right diagonal
             try:
-                if board[i][j] == board[i+1][j+1] & board[i+2][j+2]:
+                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check right
             try:
-                if board[i][j] == board[i][j+1] & board[i][j+2]:
+                if board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check lower right diagonal
             try:
-                if board[i][j] == board[i+1][j+1] & board[i+2][j+2]:
+                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check below
             try:
-                if board[i][j] == board[i+1][j] & board[i+2][j]:
+                if board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check lower left diagonal
             try:
-                if board[i][j] == board[i+1][j-1] & board[i+2][j-1]:
+                if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check left
             try:
-                if board[i][j] == board[i-1][j] & board[i-2][j]:
+                if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
             # check upper left diagonal
             try:
-                if board[i][j] == board[i-1][j-1] & board[i-2][j-2]:
+                if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]:
                     return board[i][j]
-            except IndexError:
+            except (TypeError, IndexError):
                 pass
 
     return None
@@ -142,6 +144,8 @@ def utility(board):
     if winner(board) == "X":
         return 1
     elif winner(board) == "O":
+        return -1
+    else:
         return 0
 
 
