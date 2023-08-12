@@ -78,71 +78,49 @@ def winner(board):
     print("board", board)
     for i in range(len(board)):
         for j in range(len(board[i])):
-            # check above
-            try:
-                if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
-                    print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]")
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # check upper right diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
-                    print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]")
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # check right
-            try:
-                if board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]:
-                    print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]")
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # check lower right diagonal
-            try:
-                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
-                    print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]")
-                    return board[i][j]
-            except (TypeError, IndexError):
-                pass
-            # check below
+            # vertical win
             try:
                 if board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]:
                     print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j] == board[i+2][j]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
-            # check lower left diagonal
+            # horizontal win
             try:
-                if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]:
+                if board[i][j] != None and board[i][j] == board[i][j+1] == board[i][j+2]:
                     print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
-            # check left
+            # [faulty] diagonal
             try:
-                if board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]:
+                if board[i][j] != None and board[i][j] == board[i-1][j+1] == board[i-2][j+2]:
                     print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j] == board[i-2][j]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
-            # check upper left diagonal
+            # lower right diagonal
+            try:
+                if board[i][j] != None and board[i][j] == board[i+1][j+1] == board[i+2][j+2]:
+                    print(i, j)
+                    return board[i][j]
+            except (TypeError, IndexError):
+                pass
+            # upper left diagonal
             try:
                 if board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]:
                     print(i, j)
-                    print("Won via board[i][j] != None and board[i][j] == board[i-1][j-1] == board[i-2][j-2]")
                     return board[i][j]
             except (TypeError, IndexError):
                 pass
-
+            # lower left diagonal
+            try:
+                if board[i][j] != None and board[i][j] == board[i+1][j-1] == board[i+2][j-2]:
+                    print(i, j)
+                    return board[i][j]
+            except (TypeError, IndexError):
+                pass
+                
     return None
 
 def terminal(board):
