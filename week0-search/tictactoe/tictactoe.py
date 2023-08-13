@@ -131,10 +131,38 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    if terminal(board):
-        return None
-    else:
-        # test generate random action
-        return random.choice(list(actions(board)))
+    def max_value(board):
+        if terminal(board):
+            return utility(board)
+        v = float('-inf')
+        for action in actions(board):
+            v = max(v, min_value(result(board, action)))
+        return v
+
+    def min_value(board):
+        if terminal(board):
+            return utility(board)
+        v = float('inf')
+        for action in actions(board):
+            v = min(v, max_value(result(board, action)))
+        return v
+
+    val_move = {}
+    if player(board) == "X":
+        for action in actions(board):
+            val_move[action] = min_value(result(board, action))
+        return max(val_move, key=lambda k: val_move[k])
+
+    elif player(board) == "O":
+        for action in actions(board):
+            val_move[action] = max_value(result(board, action))
+        return min(val_move, key=lambda k: val_move[k])
+
+    # test random move
+    # if terminal(board):
+    #     return None
+    # else:
+    #     # test generate random action
+    #     return random.choice(list(actions(board)))
 
     
