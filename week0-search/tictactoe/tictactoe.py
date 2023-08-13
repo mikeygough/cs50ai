@@ -147,6 +147,9 @@ def minimax(board):
             v = min(v, max_value(result(board, action)))
         return v
 
+    if terminal(board):
+        return None
+
     val_move = {}
     if player(board) == "X":
         for action in actions(board):
